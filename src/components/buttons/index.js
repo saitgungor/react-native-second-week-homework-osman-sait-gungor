@@ -1,8 +1,8 @@
-import {View, Text, FlatList} from 'react-native';
+import {View, Text, FlatList, TouchableOpacity} from 'react-native';
 
 import styles from './styles';
 
-export const Buttons = () => {
+export const Buttons = props => {
   const buttons = [
     'AC',
     'DEL',
@@ -11,7 +11,7 @@ export const Buttons = () => {
     '7',
     '8',
     '9',
-    'x',
+    'X',
     '4',
     '5',
     '6',
@@ -20,26 +20,40 @@ export const Buttons = () => {
     '2',
     '3',
     '+',
-    'Boş',
+    ' ',
     '0',
     ',',
     '=',
   ];
+
   return (
-    <View style={styles.container}>
+    <TouchableOpacity activeOpacity={1} style={styles.container}>
       <FlatList
         data={buttons}
-        renderItem={({item, index}) => {
-          console.log(item);
+        renderItem={({item}) => {
+          const operations = ['AC', 'DEL', '%', '÷', 'X', '-', '+', ',', '='];
+          let isOprBtn, isEmptyBtn;
+          if (operations.includes(item)) isOprBtn = true;
+          if (item === ' ') isEmptyBtn = true;
           return (
-            <View style={styles.buttonContainer}>
-              <Text style={styles.buttonContent}>{item}</Text>
-            </View>
+            <TouchableOpacity
+              style={!isEmptyBtn ? styles.buttonContainer : styles.emptyButton}
+              onPress={() => {
+                props.onPressHandler(item);
+              }}
+              id={item}>
+              <Text
+                style={
+                  isOprBtn ? styles.operationButton : styles.buttonContent
+                }>
+                {item}
+              </Text>
+            </TouchableOpacity>
           );
         }}
         numColumns={4}
         estimatedItemSize={20}
       />
-    </View>
+    </TouchableOpacity>
   );
 };

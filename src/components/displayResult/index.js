@@ -2,10 +2,10 @@ import {View, Text} from 'react-native';
 
 import styles from './styles';
 
-export const DisplayResult = () => {
+export const DisplayResult = props => {
   return (
     <View style={styles.container}>
-      <Text>Deneme Result</Text>
+      <Text style={styles.input}>{props.current}</Text>
     </View>
   );
 };

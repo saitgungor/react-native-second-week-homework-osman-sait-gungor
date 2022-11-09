@@ -8,6 +8,8 @@ const styles = StyleSheet.create({
     width: W(100),
     backgroundColor: '#EBEBEB',
     alignItems: 'center',
+    borderTopLeftRadius: W(6),
+    borderTopRightRadius: W(6),
   },
   buttonContainer: {
     width: W(19),
@@ -19,9 +21,22 @@ const styles = StyleSheet.create({
   buttonContent: {
     flex: 1,
     fontWeight: 'bold',
+    fontSize: 32,
+    textAlign: 'center',
+    textAlignVertical: 'center',
+  },
+  operationButton: {
+    flex: 1,
+    fontWeight: 'bold',
     fontSize: 28,
     textAlign: 'center',
     textAlignVertical: 'center',
+    color: '#0A58F6',
+  },
+  emptyButton: {
+    width: W(19),
+    height: W(19),
+    margin: H(1),
   },
 });
 
